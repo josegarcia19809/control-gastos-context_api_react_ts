@@ -1,11 +1,6 @@
 import BudgetForm from "./components/BudgetForm.tsx";
-import {useContext} from "react";
-import {BudgetContext} from "./context/BudgetContext.tsx";
 
 function App() {
-
-    const context= useContext(BudgetContext);
-    console.log(context);
 
     return (
         <>
