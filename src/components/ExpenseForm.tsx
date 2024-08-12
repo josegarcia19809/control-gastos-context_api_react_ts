@@ -1,4 +1,10 @@
 import {categories} from "../data/categories.ts";
+import DatePicker from "react-date-picker";
+import "react-calendar/dist/Calendar.css";
+import "react-date-picker/dist/DatePicker.css";
+
+type ValuePiece=Date |null;
+type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 function ExpenseForm() {
     return (
@@ -57,6 +63,19 @@ function ExpenseForm() {
                     ))}
                 </select>
             </div>
+
+            <div className="flex flex-col gap-2">
+                <label
+                    htmlFor="expenseName"
+                    className="text-xl">
+                    Fecha gasto:
+                </label>
+                <DatePicker
+                    className="bg-slate-100 p-2 border-0"
+                />
+            </div>
+
+
             <input
                 type="submit"
                 className="bg-blue-600 cursor-pointer w-full p-2 text-white uppercase
