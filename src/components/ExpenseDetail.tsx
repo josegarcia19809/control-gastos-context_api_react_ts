@@ -28,6 +28,7 @@ function ExpenseDetail({expense}: ExpenseDetailProps) {
         <LeadingActions>
             <SwipeAction
                 onClick={() => {
+                    dispatch({type: "get-expense-by-id", payload: {id: expense.id}});
                 }}
             >
                 Actualizar
