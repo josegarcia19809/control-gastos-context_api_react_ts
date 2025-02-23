@@ -4,6 +4,7 @@ import {useEffect, useMemo} from "react";
 import BudgetTracker from "./components/BudgetTracker.tsx";
 import ExpenseModal from "./components/ExpenseModal.tsx";
 import ExpenseList from "./components/ExpenseList.tsx";
+import FilterByCategory from "./components/FilterByCategory.tsx";
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
 
             {isValidBudget && (
                 <main className="max-w-3xl mx-auto py-10">
+                    <FilterByCategory/>
                     <ExpenseList/>
                     <ExpenseModal/>
                 </main>
