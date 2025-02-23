@@ -2,7 +2,7 @@ import {categories} from "../data/categories.ts";
 import DatePicker from "react-date-picker";
 import "react-calendar/dist/Calendar.css";
 import "react-date-picker/dist/DatePicker.css";
-import {ChangeEvent, FormEvent, useState} from "react";
+import {ChangeEvent, FormEvent, useEffect, useState} from "react";
 import {DraftExpense, Value} from "../types";
 import ErrorMessage from "./ErrorMessage.tsx";
 import {useBudget} from "../hooks/useBudget.ts";
@@ -18,7 +18,15 @@ function ExpenseForm() {
 
     const [error, setError] = useState("");
 
-    const {dispatch} = useBudget();
+    const {dispatch, state} = useBudget();
+
+    useEffect(() => {
+        if (state.editingId) {
+            const editingExpense = state.expenses
+                .filter(currentExpense => currentExpense.id === state.editingId)[0];
+            setExpense(editingExpense);
+        }
+    }, [state.editingId])
 
     const handleChange = (e: ChangeEvent<HTMLInputElement> |
         ChangeEvent<HTMLSelectElement>) => {
